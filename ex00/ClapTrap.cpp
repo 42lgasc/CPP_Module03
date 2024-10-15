@@ -6,7 +6,7 @@
 /*   By: lgasc <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 14:25:56 by lgasc             #+#    #+#             */
-/*   Updated: 2024/10/15 18:01:58 by lgasc            ###   ########.fr       */
+/*   Updated: 2024/10/15 19:43:55 by lgasc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ ClapTrap::~ ClapTrap	(void) {
 ClapTrap::ClapTrap	(const std::string & name)
 		: name (name), hit_points (c_hit_points),
 		energy_points (c_energy_points), attack_damage (c_attack_damage) {
-	std::cout << FAINT "ClapTrap " << name << " construction..." REGULAR
-		<< std::endl;
+	std::cout << FAINT "ClapTrap construction with name " << name
+		<< "..." REGULAR << std::endl;
 }
 
 
