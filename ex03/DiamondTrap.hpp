@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgasc <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:11:06 by lgasc             #+#    #+#             */
-/*   Updated: 2024/10/16 19:48:39 by lgasc            ###   ########.fr       */
+/*   Updated: 2024/10/16 19:59:26 by lgasc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAV_TRAP_HPP
-# define SCAV_TRAP_HPP
+#ifndef DIAMOND_TRAP_HPP
+# define DIAMOND_TRAP_HPP
 
-# include "ClapTrap.hpp"
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
 
-class ScavTrap : public virtual ClapTrap {
-protected:
-	static const unsigned
-		c_hit_points = 100,	c_energy_points = 50,	c_attack_damage = 20;
+class DiamondTrap : public ScavTrap, public FragTrap {
+	static const unsigned	c_hit_points	= FragTrap::c_hit_points,
+							c_energy_points	= ScavTrap::c_energy_points,
+							c_attack_damage	= FragTrap::c_attack_damage;
+	static const std::string	c_name,	c_suffix;
 
-	ScavTrap	(void);
+	std::string	name;
+
+	DiamondTrap	(void);
 public:
-	ScavTrap	(const ScavTrap &);
-	ScavTrap	& operator = (const ScavTrap &);
-	~ ScavTrap	(void);
+	DiamondTrap	(const DiamondTrap &);
+	DiamondTrap	& operator = (const DiamondTrap &);
+	~ DiamondTrap	(void);
 
-	ScavTrap	(const std::string & name);
+	DiamondTrap	(const std::string & name);
 
 	void	attack(const std::string & target);
 	void	takeDamage(unsigned amount);
 	void	beRepaired(unsigned amount);
 	void	guardGate(void) const;
+	void	highFivesGuys(void) const;
 };
 #endif
