@@ -6,7 +6,7 @@
 /*   By: lgasc <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 14:25:56 by lgasc             #+#    #+#             */
-/*   Updated: 2024/10/15 19:43:55 by lgasc            ###   ########.fr       */
+/*   Updated: 2024/10/16 16:24:28 by lgasc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ ClapTrap::ClapTrap	(const std::string & name)
 void	ClapTrap::attack(const std::string & target) {
 	if (hit_points <= 0 or energy_points <= 0) return ;
 	std::cout << "ClapTrap " << name << " attacks " << target << ", causing "
-		<< attack_damage << " point" << "s" + (attack_damage <= 1)
+		<< attack_damage << " point" << & "s" [attack_damage <= 1]
 		<< " of damage!\n";
 	-- energy_points;
 }
 
 void	ClapTrap::takeDamage(const unsigned amount) {
 	std::cout << "ClapTrap " << name << " receives " << amount
-		<< " point" << "s" + (amount <= 1) << " of damage!\n";
+		<< " point" << & "s" [amount <= 1] << " of damage!\n";
 	if (amount >= hit_points) { hit_points = 0; return ; }
 	hit_points -= amount;
 }
@@ -74,7 +74,7 @@ void	ClapTrap::takeDamage(const unsigned amount) {
 void	ClapTrap::beRepaired(const unsigned amount) {
 	if (hit_points <= 0 or energy_points <= 0) return ;
 	std::cout << "ClapTrap " << name << " recovers " << amount << " hit point"
-		<< "s" + (amount <= 1) << "!\n";
+		<< & "s" [amount <= 1] << "!\n";
 	-- energy_points;
 	hit_points += amount;
 }

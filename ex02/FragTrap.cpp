@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgasc <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:18:53 by lgasc             #+#    #+#             */
-/*   Updated: 2024/10/16 16:21:05 by lgasc            ###   ########.fr       */
+/*   Updated: 2024/10/16 16:19:53 by lgasc            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 #include <iostream> // cout, endl
 
@@ -20,33 +20,33 @@
 
 // Canonical Four
 
-ScavTrap::ScavTrap	(void) : ClapTrap () {
-	std::cout << FAINT "ScavTrap default-construction..." REGULAR << std::endl;
+FragTrap::FragTrap	(void) : ClapTrap () {
+	std::cout << FAINT "FragTrap default-construction..." REGULAR << std::endl;
 	name = "Wilde";
 	hit_points		= c_hit_points;
 	energy_points	= c_energy_points;
 	attack_damage	= c_attack_damage;
 }
-ScavTrap::ScavTrap	(const ScavTrap & s) : ClapTrap (s) {
-	std::cout << FAINT "ScavTrap copy-construction from " << s.name
+FragTrap::FragTrap	(const FragTrap & s) : ClapTrap (s) {
+	std::cout << FAINT "FragTrap copy-construction from " << s.name
 		<< "..." REGULAR << std::endl;
 }
-ScavTrap	& ScavTrap::operator = (const ScavTrap & s) {
-	std::cout << FAINT "ScavTrap " << name << " copy-assignment from " << s.name
+FragTrap	& FragTrap::operator = (const FragTrap & s) {
+	std::cout << FAINT "FragTrap " << name << " copy-assignment from " << s.name
 		<< "..." REGULAR << std::endl;
 	ClapTrap::operator = (s);
 	return *this;
 }
-ScavTrap::~ ScavTrap	(void) {
-	std::cout << FAINT "ScavTrap " << name << " destruction..." REGULAR
+FragTrap::~ FragTrap	(void) {
+	std::cout << FAINT "FragTrap " << name << " destruction..." REGULAR
 		<< std::endl;
 }
 
 
 // other Constructors
 
-ScavTrap::ScavTrap	(const std::string & name) : ClapTrap (name) {
-	std::cout << FAINT "ScavTrap construction with name " << name
+FragTrap::FragTrap	(const std::string & name) : ClapTrap (name) {
+	std::cout << FAINT "FragTrap construction with name " << name
 		<< "..." REGULAR << std::endl;
 	hit_points		= c_hit_points;
 	energy_points	= c_energy_points;
@@ -56,24 +56,24 @@ ScavTrap::ScavTrap	(const std::string & name) : ClapTrap (name) {
 
 // Methods
 
-void	ScavTrap::attack(const std::string & target) {
+void	FragTrap::attack(const std::string & target) {
 	if (hit_points <= 0 or energy_points <= 0) return ;
-	std::cout << "ScavTrap " << name << " attacks " << target << ", causing "
+	std::cout << "FragTrap " << name << " attacks " << target << ", causing "
 		<< attack_damage << " point" << & "s" [attack_damage <= 1]
 		<< " of damage!\n";
 	ClapTrap::attack(target);
 }
-void	ScavTrap::takeDamage(const unsigned amount) {
-	std::cout << "ScavTrap " << name << " receives " << amount << " point"
+void	FragTrap::takeDamage(const unsigned amount) {
+	std::cout << "FragTrap " << name << " receives " << amount << " point"
 		<< & "s" [amount <= 1] << " of damage!\n";
 	ClapTrap::takeDamage(amount);
 }
-void	ScavTrap::beRepaired(const unsigned amount) {
+void	FragTrap::beRepaired(const unsigned amount) {
 	if (hit_points <= 0 or energy_points <= 0) return ;
-	std::cout << "ScavTrap " << name << " recovers " << amount << " hit point"
+	std::cout << "FragTrap " << name << " recovers " << amount << " hit point"
 		<< & "s" [amount <= 1] << "!\n";
 	ClapTrap::beRepaired(amount);
 }
 
-void	ScavTrap::guardGate(void) const
-{ std::cout << "ScavTrap " << name << " is now in Gate Keeper mode!\n"; }
+void	FragTrap::highFivesGuys(void) const
+{ std::cout << "FragTrap " << name << " wants an High Five!\n"; }
